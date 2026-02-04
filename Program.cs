@@ -8,33 +8,25 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReact",
-        policy => policy.WithOrigins("http://localhost:3000")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
-});
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("PermitirVercel", policy =>
+    options.AddPolicy("UniversalPolicy", policy =>
     {
-        policy.AllowAnyOrigin() 
+        policy.AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod();
     });
 });
 var app = builder.Build();
-
-app.UseCors("AllowReact");
+app.UseCors("UniversalPolicy");
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.MapControllers(); // IMPORTANTE
 }
 
-app.UseHttpsRedirection();
+app.MapControllers();
+
+// app.UseHttpsRedirection();
 app.UseCors("PermitirVercel");
 
 var summaries = new[]
