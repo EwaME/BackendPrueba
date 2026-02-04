@@ -1,22 +1,22 @@
-# Etapa de construcción
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copiar archivos del proyecto y restaurar dependencias
-COPY *.csproj ./
-RUN dotnet restore
+# Copiamos el archivo del proyecto usando la ruta actual
+COPY ["backend.api.csproj", "./"]
+RUN dotnet restore "backend.api.csproj"
 
-# Copiar todo lo demás y publicar
-COPY . ./
-RUN dotnet publish -c Release -o out
+# Copiamos todo el contenido de la carpeta
+COPY . .
 
-# Etapa final (Runtime)
+# Compilamos apuntando directo al archivo
+RUN dotnet publish "backend.api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app/publish .
 
-# Exponer el puerto que Render asigna
+# Puerto para Render
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "backend.api.csproj"]
+ENTRYPOINT ["dotnet", "backend.api.dll"]
