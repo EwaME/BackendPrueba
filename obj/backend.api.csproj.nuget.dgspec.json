@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api\\backend.api.csproj": {}
+    "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api\\backend.api.csproj": {
+    "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api\\backend.api.csproj",
+        "projectUniqueName": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api.csproj",
         "projectName": "backend.api",
-        "projectPath": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api\\backend.api.csproj",
+        "projectPath": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api.csproj",
         "packagesPath": "C:\\Users\\edwar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\backend.api\\obj\\",
+        "outputPath": "C:\\Users\\edwar\\OneDrive\\Documentos\\BackendPrueba\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\edwar\\AppData\\Roaming\\NuGet\\NuGet.Config"
