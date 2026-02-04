@@ -14,23 +14,28 @@ builder.Services.AddCors(options =>
                         .AllowAnyMethod());
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirVercel", policy =>
+    {
+        policy.AllowAnyOrigin() 
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 app.UseCors("AllowReact");
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-
     app.MapControllers(); // IMPORTANTE
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
+app.UseCors("PermitirVercel");
 
 var summaries = new[]
 {
